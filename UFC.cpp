@@ -54,16 +54,26 @@ public:
 
     void ganhouLuta()
     {
-        vitorias++; 
+        cout<< this->getNome() << " venceu!" << endl;
+        vitorias++;
+    }
+    void perdeuLuta()
+    {
+        cout<< this->getNome() << " perdeu!" << endl;
+        derrotas++;
+    }
+    void empatarLuta()
+    {
+        cout<< this->getNome() << " empatou!" << endl;
+        empates++;
     }
 
-    lutadores(string nome, string nacionalidade, int idade, float peso, string caracter, int vitorias, int derrotas, int empates)
+    lutadores(string nome, string nacionalidade, int idade, float peso, int vitorias, int derrotas, int empates)
     {
         this->nome = nome;
         this->nacionalidade = nacionalidade;
         this->idade = idade;
         this->peso = peso;
-        this->caracter = caracter;
         this->vitorias = vitorias;
         this->derrotas = derrotas;
         this->empates = empates;
@@ -76,25 +86,22 @@ int main()
 {
     vector<lutadores *> lutadoresArray;
 
-    lutadoresArray.push_back(new lutadores("Shamil Abdurakhimov", "Russo", 43, 119, "Determinado", 10, 0, 1));
-    lutadoresArray.push_back(new lutadores("Carlos", "Brasileiro", 28, 80.0, "Focado", 12, 2, 0));
+    lutadoresArray.push_back(new lutadores("Shamil Abdurakhimov", "Russo", 43, 119, 10, 0, 1));
+    lutadoresArray.push_back(new lutadores("Carlos", "Brasileiro", 28, 80.0, 12, 2, 0));
 
     for (int i = 0; i < 2; i++)
     {
         lutadoresArray[0]->apresenta(lutadoresArray);
     }
 
-  
     cout << "\nShamil Abdurakhimov ganhou uma luta!" << endl;
-    lutadoresArray[0]->ganhouLuta(); 
+    lutadoresArray[0]->ganhouLuta();
 
-  
     for (int i = 0; i < 2; i++)
     {
         lutadoresArray[0]->apresenta(lutadoresArray);
     }
 
-   
     for (lutadores *lutador : lutadoresArray)
     {
         delete lutador;
